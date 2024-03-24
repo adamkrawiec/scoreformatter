@@ -34,3 +34,4 @@ Run the project:
 1. install dependencies: npm install
 2. compile project: npx tsc
 3. run tests: npm test
+4. run project: node dist/main.js

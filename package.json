@@ -20,10 +20,6 @@
     "typescript": "^5.4.3"
   },
   "dependencies": {
-    "@types/lodash.compact": "^3.0.9",
-    "@types/lodash.map": "^4.6.13",
-    "lodash": "^4.17.21",
-    "lodash.compact": "^3.0.1",
-    "lodash.map": "^4.6.0"
+    "lodash": "^4.17.21"
   }
 }

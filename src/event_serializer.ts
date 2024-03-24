@@ -74,23 +74,25 @@ class SkiJumpingSerializer extends BaseSerializer {
 export class EventSerializer {
   event: Event
 
+  static mapping = {
+    soccer: SoccerSerializer,
+    volleyball: VolleyballSerializer,
+    handball: HandballSerializer,
+    basketball: BasketballSerializer,
+    tennis: TennisSerializer,
+    'ski jumping': SkiJumpingSerializer
+  }
+
   constructor (event: Event) {
     this.event = event
   }
 
   serializer (): BaseSerializer {
-    const mapping = {
-      soccer: new SoccerSerializer(this.event),
-      volleyball: new VolleyballSerializer(this.event),
-      handball: new HandballSerializer(this.event),
-      basketball: new BasketballSerializer(this.event),
-      tennis: new TennisSerializer(this.event),
-      'ski jumping': new SkiJumpingSerializer(this.event)
-    }
-    const eventMapping = mapping[this.event.sport]
-    if (isNil(eventMapping)) throw new Error('Sport type not supported!')
+    const eventSerializerClass= EventSerializer.mapping[this.event.sport]
+    if (isNil(eventSerializerClass)) throw new Error('Sport type not supported!')
 
-    return eventMapping
+    const eventSerializer = new eventSerializerClass(this.event)
+    return eventSerializer
   }
 
   serialize (): EventSerialized | undefined {
