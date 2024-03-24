@@ -1,0 +1,10 @@
+{
+  "include": [
+    "data.ts",
+    "src/**/*"
+  ],
+  "compilerOptions": {
+    "outDir": "dist",
+    "strictNullChecks": true
+  },
+}
